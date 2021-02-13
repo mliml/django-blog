@@ -49,7 +49,7 @@
       - 其中的 settings.py 包含项目的配置参数
       - urls.py 则是项目的根路由文件
 
-# 注册 APP
+## 注册 APP
 - 接着我们需要修改项目配置文件，“告诉” Django 现在有 article 这么一个 app 了。
 
 ```
@@ -61,5 +61,36 @@ INSTALLED_APPS = [
 
     # 新增'article'代码，激活app
     'article',
+]
+```
+## 配置访问路径（urls）
+- url 可以理解为访问网站时输入的网址链接，配置好 url 后 Django 才知道怎样定位 app。
+```
+my_blog/urls.py
+
+from django.contrib import admin
+# 记得引入include
+from django.urls import path, include
+
+# 存放映射关系的列表
+urlpatterns = [
+    path('admin/', admin.site.urls),
+
+    # 新增代码，配置app的url
+    path('article/', include('article.urls', namespace='article')),
+]
+```
+- 还没结束。如果后续有三级地址的 url 配置则需要转移到 article 文件夹下的 url.py
+```
+article/urls.py
+
+# 引入path
+from django.urls import path
+
+# 正在部署的应用的名称
+app_name = 'article'
+
+urlpatterns = [
+    # 目前还没有urls
 ]
 ```
