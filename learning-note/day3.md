@@ -23,10 +23,10 @@ def article_list(request):
 
 ## 网站后台
 
-- Django 内置了一个很好的后台管理工具，只需要些少量代码，就可以实现强大的功能。
-- 创建管理员账号
+Django 内置了一个很好的后台管理工具，只需要些少量代码，就可以实现强大的功能。
+1. 创建管理员账号
 ```python manage.py createsuperuser```
-- 将 ArticlePost 注册到后台中
+2. 将 ArticlePost 注册到后台中
 ```
 article/admin.py
 
